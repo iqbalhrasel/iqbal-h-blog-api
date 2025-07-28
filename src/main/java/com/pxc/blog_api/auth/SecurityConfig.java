@@ -88,7 +88,7 @@ public class SecurityConfig {
 
                     Cookie cookie = new Cookie("refreshToken", "");
                     cookie.setHttpOnly(true);
-                    cookie.setSecure(false);
+                    cookie.setSecure(true);
                     cookie.setPath("/auth/refresh");
                     cookie.setMaxAge(0);
                     cookie.setAttribute("SameSite", "None"); //none for prod
