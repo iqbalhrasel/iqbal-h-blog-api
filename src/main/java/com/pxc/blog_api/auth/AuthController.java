@@ -62,6 +62,7 @@ public class AuthController {
 
     @PostMapping("/refresh")
     public ResponseEntity<JwtResponse> refresh(@CookieValue(value = "refreshToken") String refreshToken){
+        System.out.println("rt"+refreshToken.charAt(refreshToken.length()-4));
         Jwt accessToken = authService.refreshAccessToken(refreshToken);
 
         return ResponseEntity.ok(new JwtResponse(accessToken.toString()));
