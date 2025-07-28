@@ -89,7 +89,7 @@ public class SecurityConfig {
                     cookie.setSecure(false);
                     cookie.setPath("/auth/refresh");
                     cookie.setMaxAge(0);
-                    cookie.setAttribute("SameSite", "Lax"); //none for prod
+                    cookie.setAttribute("SameSite", "None"); //none for prod
 
                     response.addCookie(cookie);
                 }));
@@ -99,7 +99,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of(frontendUrl));
+        configuration.setAllowedOrigins(List.of("https://lucky-sundae-b49952.netlify.app"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
