@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: blog_api
+  profiles:
+    active: prod
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  jwt:
+    secret: ${JWT_SECRET}
+    accessTokenExpiration: 900 #15 min
+    refreshTokenExpiration: 604800 #7 days
+frontendUrl: ${FRONTEND_URL}
+perPageSize: ${PER_PAGE_SIZE}
