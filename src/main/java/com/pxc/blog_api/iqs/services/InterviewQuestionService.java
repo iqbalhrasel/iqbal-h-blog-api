@@ -22,12 +22,18 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@RequiredArgsConstructor
+
 @Service
 public class InterviewQuestionService {
     private final TopicRepository topicRepository;
     private final IqRepository iqRepository;
     private final IqMapper iqMapper;
+
+    public InterviewQuestionService(TopicRepository topicRepository, IqRepository iqRepository, IqMapper iqMapper) {
+        this.topicRepository = topicRepository;
+        this.iqRepository = iqRepository;
+        this.iqMapper = iqMapper;
+    }
 
     @Value("${perPageSize}")
     private int perPageSize;

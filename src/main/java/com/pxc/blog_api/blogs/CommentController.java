@@ -14,11 +14,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
-@AllArgsConstructor
 @RestController
 @RequestMapping("/comments")
 public class CommentController {
     private final CommentService commentService;
+
+    public CommentController(CommentService commentService) {
+        this.commentService = commentService;
+    }
 
     @PostMapping("/add")
     public ResponseEntity<CommentDto> addComment(@RequestBody CommentRequest commentRequest, HttpServletRequest servletRequest){

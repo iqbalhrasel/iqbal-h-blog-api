@@ -10,10 +10,6 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
 @Entity
 @Table(name = "topics")
 public class Topic {
@@ -30,6 +26,48 @@ public class Topic {
 
     @OneToMany(mappedBy = "topic")
     private List<InterviewQuestion> questions = new ArrayList<>();
+
+    public Topic(Short id, String name, List<Blog> blogs, List<InterviewQuestion> questions) {
+        this.id = id;
+        this.name = name;
+        this.blogs = blogs;
+        this.questions = questions;
+    }
+
+    public Topic() {
+    }
+
+    public Short getId() {
+        return id;
+    }
+
+    public void setId(Short id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Blog> getBlogs() {
+        return blogs;
+    }
+
+    public void setBlogs(List<Blog> blogs) {
+        this.blogs = blogs;
+    }
+
+    public List<InterviewQuestion> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<InterviewQuestion> questions) {
+        this.questions = questions;
+    }
 
     @Override
     public String toString() {

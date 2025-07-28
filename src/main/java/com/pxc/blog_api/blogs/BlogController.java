@@ -13,11 +13,15 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.List;
 import java.util.Map;
 
-@AllArgsConstructor
+
 @RestController
 @RequestMapping("/blogs")
 public class BlogController {
     private final BlogService blogService;
+
+    public BlogController(BlogService blogService) {
+        this.blogService = blogService;
+    }
 
     @GetMapping
     public BlogsWithPage getBlogs(@RequestParam(name = "pageNo") Integer pageNo,

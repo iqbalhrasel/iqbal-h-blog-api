@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@AllArgsConstructor
 @RestController
 @RequestMapping("/topics")
 public class TopicController {
     private final TopicService topicService;
+
+    public TopicController(TopicService topicService) {
+        this.topicService = topicService;
+    }
 
     @GetMapping
     public List<TopicDto> allTopics(){

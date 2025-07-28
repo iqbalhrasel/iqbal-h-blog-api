@@ -14,11 +14,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-@AllArgsConstructor
 @RestController
 @RequestMapping("/admin/iq")
 public class AdminIqController {
     private final InterviewQuestionService interviewQuestionService;
+
+    public AdminIqController(InterviewQuestionService interviewQuestionService) {
+        this.interviewQuestionService = interviewQuestionService;
+    }
 
     //delete
     @DeleteMapping("/{iqId}")

@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-@AllArgsConstructor
 @RestController
 @RequestMapping("/admin/blogs")
 public class AdminBlogController {
     private final BlogService blogService;
+
+    public AdminBlogController(BlogService blogService) {
+        this.blogService = blogService;
+    }
 
     @DeleteMapping("/{blogId}")
     public ResponseEntity<Void> deleteBlog(@PathVariable(name = "blogId") Integer blogId){

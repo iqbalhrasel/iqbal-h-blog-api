@@ -26,7 +26,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-@RequiredArgsConstructor
 @Service
 public class BlogService {
     private final BlogRepository blogRepository;
@@ -35,6 +34,15 @@ public class BlogService {
     private final TopicRepository topicRepository;
     private final BlogMapper blogMapper;
     private final IqMapper iqMapper;
+
+    public BlogService(BlogRepository blogRepository, IqRepository iqRepository, UserRepository userRepository, TopicRepository topicRepository, BlogMapper blogMapper, IqMapper iqMapper) {
+        this.blogRepository = blogRepository;
+        this.iqRepository = iqRepository;
+        this.userRepository = userRepository;
+        this.topicRepository = topicRepository;
+        this.blogMapper = blogMapper;
+        this.iqMapper = iqMapper;
+    }
 
     @Value("${perPageSize}")
     private int perPageSize;

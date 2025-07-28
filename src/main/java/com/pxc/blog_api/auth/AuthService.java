@@ -20,7 +20,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-@AllArgsConstructor
 @Service
 public class AuthService {
     private final UserRepository userRepository;
@@ -29,6 +28,15 @@ public class AuthService {
     private final JwtService jwtService;
     private final UserMapper userMapper;
     private final PasswordEncoder encoder;
+
+    public AuthService(UserRepository userRepository, TokenRepository tokenRepository, AuthenticationManager authenticationManager, JwtService jwtService, UserMapper userMapper, PasswordEncoder encoder) {
+        this.userRepository = userRepository;
+        this.tokenRepository = tokenRepository;
+        this.authenticationManager = authenticationManager;
+        this.jwtService = jwtService;
+        this.userMapper = userMapper;
+        this.encoder = encoder;
+    }
 
     public LoginResponse login(LoginRequest request) {
         authenticationManager.authenticate(

@@ -12,10 +12,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
 @Entity
 @Table(name = "blogs")
 public class Blog {
@@ -56,6 +52,111 @@ public class Blog {
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private ContentStatus status;
+
+    public Blog(Integer id, Topic topic, User author, LocalDateTime createdAt, LocalDateTime lastModified, String url, String title, String content, String metaText, List<Comment> comments, ContentStatus status) {
+        this.id = id;
+        this.topic = topic;
+        this.author = author;
+        this.createdAt = createdAt;
+        this.lastModified = lastModified;
+        this.url = url;
+        this.title = title;
+        this.content = content;
+        this.metaText = metaText;
+        this.comments = comments;
+        this.status = status;
+    }
+
+    public Blog() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Topic getTopic() {
+        return topic;
+    }
+
+    public void setTopic(Topic topic) {
+        this.topic = topic;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getLastModified() {
+        return lastModified;
+    }
+
+    public void setLastModified(LocalDateTime lastModified) {
+        this.lastModified = lastModified;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getMetaText() {
+        return metaText;
+    }
+
+    public void setMetaText(String metaText) {
+        this.metaText = metaText;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public ContentStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ContentStatus status) {
+        this.status = status;
+    }
 
     public void addComment(CommentRequest commentRequest){
         var comment = new Comment();

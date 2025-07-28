@@ -9,11 +9,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@AllArgsConstructor
 @RestController
 @RequestMapping("admin/topics")
 public class AdminTopicController {
     private final TopicService topicService;
+
+    public AdminTopicController(TopicService topicService) {
+        this.topicService = topicService;
+    }
 
     @PostMapping
     public ResponseEntity<TopicDto> addTopic(@RequestBody TopicAddRequest request){

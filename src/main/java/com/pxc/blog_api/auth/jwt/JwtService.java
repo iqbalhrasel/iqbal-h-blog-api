@@ -9,10 +9,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
-@AllArgsConstructor
+
 @Service
 public class JwtService {
     private final JwtConfig jwtConfig;
+
+    public JwtService(JwtConfig jwtConfig) {
+        this.jwtConfig = jwtConfig;
+    }
 
     public Jwt generateAccessToken(User user){
         return generateToken(user, jwtConfig.getAccessTokenExpiration());

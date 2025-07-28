@@ -18,12 +18,17 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
-@AllArgsConstructor
+
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
     private final AuthService authService;
     private final JwtConfig jwtConfig;
+
+    public AuthController(AuthService authService, JwtConfig jwtConfig) {
+        this.authService = authService;
+        this.jwtConfig = jwtConfig;
+    }
 
     @PostMapping("/login")
     public ResponseEntity<JwtResponse> login(@RequestBody LoginRequest request,

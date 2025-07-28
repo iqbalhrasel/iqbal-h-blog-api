@@ -12,11 +12,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@AllArgsConstructor
 @Service
 public class TopicService {
     private final TopicRepository topicRepository;
     private final TopicMapper topicMapper;
+
+    public TopicService(TopicRepository topicRepository, TopicMapper topicMapper) {
+        this.topicRepository = topicRepository;
+        this.topicMapper = topicMapper;
+    }
 
     public List<TopicDto> getAllTopics() {
         return topicRepository.findAllByOrderByIdAsc().stream().map(topicMapper::toDto).toList();
