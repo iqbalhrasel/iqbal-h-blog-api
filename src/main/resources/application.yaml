@@ -13,3 +13,5 @@ spring:
     refreshTokenExpiration: 604800 #7 days
 frontendUrl: ${FRONTEND_URL}
 perPageSize: ${PER_PAGE_SIZE}
+server:
+  port: ${PORT:8080}
